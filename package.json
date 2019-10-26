@@ -1,0 +1,45 @@
+{
+  "name": "future-scroll",
+  "version": "0.0.1",
+  "description": "description here",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run lint && npx webpack",
+    "lint": "eslint ./src",
+    "prepublish": "npm run build"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+{GIT-URL-HERE}.git"
+  },
+  "author": "Guillaume Pitot",
+  "license": "MIT",
+  "bugs": {
+    "url": "{GIT-URL-HERE}/issues"
+  },
+  "homepage": "{GIT-URL-HERE}#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.6.0",
+    "node-sass": "^4.12.0",
+    "path": "^0.12.7",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {}
+}
