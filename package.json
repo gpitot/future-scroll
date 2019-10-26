@@ -1,6 +1,6 @@
 {
   "name": "future-scroll",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "description here",
   "main": "lib/index.js",
   "scripts": {
@@ -19,9 +19,9 @@
   "author": "Guillaume Pitot",
   "license": "MIT",
   "bugs": {
-    "url": "{GIT-URL-HERE}/issues"
+    "url": "https://github.com/gpitot/future-scroll/issues"
   },
-  "homepage": "{GIT-URL-HERE}#readme",
+  "homepage": "https://github.com/gpitot/future-scroll/blob/master/README.md",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
