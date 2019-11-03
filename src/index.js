@@ -1,5 +1,5 @@
 import SmoothScrollingArticle from "./js/article";
-import Item from "./js/article/item2";
+import Item from "./js/article/item";
 
 
 export default SmoothScrollingArticle;
