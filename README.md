@@ -1,6 +1,13 @@
 # package template
 npm package for smooth scrolling across browsers/mouses
 
+# installation
+```javascript
+npm i future-scroll
+```
+
+[NPM package](https://www.npmjs.com/package/future-scroll)
+
 
 # how to use
 ```javascript
