@@ -8,8 +8,6 @@ export default class SmoothScrollingArticle {
     };
     this.items = items;
 
-    console.log("article is ", article);
-
     this.scrolling = false;
 
     this.renderedStyles = {
@@ -63,6 +61,11 @@ export default class SmoothScrollingArticle {
     this.DOM.main.style.overflow = "hidden";
   };
 
+
+  addItem = (item) => {
+      this.items.push(item);
+  }
+
   render = () => {
     // update the current and interpolated values
     const { translationY } = this.renderedStyles;
@@ -88,7 +91,6 @@ export default class SmoothScrollingArticle {
       }
       
     });
-    console.log(anyItemRendering);
     if (anyItemRendering) {
         requestAnimationFrame(this.render);
     } else {
