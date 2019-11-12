@@ -1,3 +1,5 @@
+import ResizeObserver from 'resize-observer-polyfill';
+
 import { lerp, getPageYScroll } from "../utils";
 
 export default class SmoothScrollingArticle {
@@ -31,7 +33,11 @@ export default class SmoothScrollingArticle {
 
     // start the render loop
     window.addEventListener("scroll", this.handleScroll);
-    window.addEventListener("resize", this.handleResize);
+
+
+    //if new content is loaded or body is resized then reset height to correct height;
+    const observer = new ResizeObserver(this.handleResize)
+    observer.observe(this.DOM.scrollable);
   }
 
   handleScroll = () => {
