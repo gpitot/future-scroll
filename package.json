@@ -1,6 +1,6 @@
 {
   "name": "future-scroll",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A library for smooth scrolling for every browser and mouse. No more jumpy effects.",
   "keywords": ["smooth", "scroll", "future", "animation"],
   "main": "lib/index.js",
