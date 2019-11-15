@@ -1,14 +1,15 @@
-import ResizeObserver from 'resize-observer-polyfill';
+import ResizeObserver from "resize-observer-polyfill";
 
 import { lerp, getPageYScroll } from "../utils";
 
 export default class SmoothScrollingArticle {
-  constructor({ article, scrollable, items }) {
+  constructor({ article, scrollable, items, fixedParents = [] }) {
     this.DOM = {
       main: article,
       scrollable
     };
     this.items = items;
+    this.fixedParents = fixedParents;
 
     this.scrolling = false;
 
@@ -34,9 +35,8 @@ export default class SmoothScrollingArticle {
     // start the render loop
     window.addEventListener("scroll", this.handleScroll);
 
-
     //if new content is loaded or body is resized then reset height to correct height;
-    const observer = new ResizeObserver(this.handleResize)
+    const observer = new ResizeObserver(this.handleResize);
     observer.observe(this.DOM.scrollable);
   }
 
@@ -56,6 +56,19 @@ export default class SmoothScrollingArticle {
     } = this.renderedStyles;
 
     this.DOM.scrollable.style.transform = `translate3d(0,${-1 * previous}px,0)`;
+
+    for (let i = 0; i < this.fixedParents.length; i++) {
+      const children = this.fixedParents[i].querySelectorAll("*");
+      for (let x = 0; x < children.length; x += 1) {
+        if (
+          window
+            .getComputedStyle(children[x], null)
+            .getPropertyValue("position") == "fixed"
+        ) {
+          children[x].style.transform = `translate3d(0, ${previous}px, 0)`;
+        }
+      }
+    }
   };
 
   style = () => {
@@ -67,10 +80,9 @@ export default class SmoothScrollingArticle {
     this.DOM.main.style.overflow = "hidden";
   };
 
-
-  addItem = (item) => {
-      this.items.push(item);
-  }
+  addItem = item => {
+    this.items.push(item);
+  };
 
   render = () => {
     // update the current and interpolated values
@@ -90,17 +102,16 @@ export default class SmoothScrollingArticle {
     }
 
     // for every item
-    
+
     this.items.forEach(element => {
       if (element.update()) {
         anyItemRendering = true;
       }
-      
     });
     if (anyItemRendering) {
-        requestAnimationFrame(this.render);
+      requestAnimationFrame(this.render);
     } else {
-        this.scrolling = false;
+      this.scrolling = false;
     }
 
     //setTimeout(() => this.render(), 1500);
